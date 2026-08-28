@@ -23,7 +23,7 @@ type AttendanceRecord = {
 const attendanceData: AttendanceRecord[] = [
   {
     employeeId: "EMP001",
-    employeeName: "",
+    employeeName: "Bowser",
     date: "2026-08-25",
     checkInTime: "09:00",
     checkOutTime: "17:00",
