@@ -11,3 +11,73 @@
  * 
  * display the registration data using console.log.
  */
+
+type Student = {
+  studentId: string;
+  fullName: string;
+  gradeLevel: string;
+};
+
+type Course = {
+  courseId: string;
+  courseTitle: string;
+  instructorName: string;
+  totalLearningHours: number;
+};
+
+type Registration = {
+  student: Student;
+  course: Course;
+  registrationDate: string;
+  isPaymentCompleted: boolean;
+};
+
+const registrations: Registration[] = [
+  {
+    student: {
+      studentId: "STU001",
+      fullName: "Matahari Bulan",
+      gradeLevel: "Grade 10",
+    },
+    course: {
+      courseId: "CRS001",
+      courseTitle: "Introduction to TypeScript",
+      instructorName: "Fajar Imawan",
+      totalLearningHours: 20,
+    },
+    registrationDate: "2026-08-20",
+    isPaymentCompleted: true,
+  },
+  {
+    student: {
+      studentId: "STU002",
+      fullName: "Bumi Langit Angkasa",
+      gradeLevel: "Grade 11",
+    },
+    course: {
+      courseId: "CRS002",
+      courseTitle: "Advanced JavaScript",
+      instructorName: "Cahyaning Pininta Kustia",
+      totalLearningHours: 30,
+    },
+    registrationDate: "2026-08-22",
+    isPaymentCompleted: false,
+  },
+  {
+    student: {
+      studentId: "STU003",
+      fullName: "Awan Bintang Laut",
+      gradeLevel: "Grade 12",
+    },
+    course: {
+      courseId: "CRS003",
+      courseTitle: "Data Script",
+      instructorName: "Rhodotul Jannah",
+      totalLearningHours: 25,
+    },
+    registrationDate: "2026-08-27",
+    isPaymentCompleted: false,
+  },
+];
+
+console.log(registrations);
