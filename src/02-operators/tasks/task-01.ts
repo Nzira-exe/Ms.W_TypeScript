@@ -14,3 +14,19 @@
  *  - Final payment
  * 2. Display the calculation results.
  */
+
+const friedRicePrice = 18000;
+const friedRiceQty = 3;
+const waterPrice = 5000;
+const waterQty = 2;
+const discount = 10000;
+
+const totalFriedRice = friedRicePrice * friedRiceQty;
+const totalWater = waterPrice * waterQty;
+const grandTotal = totalFriedRice + totalWater;
+const finalPayment = grandTotal - discount;
+
+console.log("Total Fried Rice:", totalFriedRice);
+console.log("Total Water:", totalWater);
+console.log("Grand Total:", grandTotal);
+console.log("Final Payment:", finalPayment);

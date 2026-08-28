@@ -33,3 +33,26 @@
  * - Calculate the remaining scholarship budget.
  * - Display whether the student is accepted.
  */
+
+const studentName = "Alya Putri";
+const gpa = 3.89;
+const familyIncome = 4200000;
+const competitionCount = 4;
+const hasDisciplinaryRecord = false;
+const documentsComplete = true;
+const scholarshipBudget = 500000000;
+
+const isQualified =
+  gpa >= 3.75 &&
+  familyIncome < 5000000 &&
+  competitionCount >= 3 &&
+  !hasDisciplinaryRecord &&
+  documentsComplete;
+
+const scholarshipAmount = isQualified ? 12000000 : 0;
+const remainingBudget = scholarshipBudget - scholarshipAmount;
+
+console.log("Student Name:", studentName);
+console.log("Is Qualified:", isQualified);
+console.log("Scholarship Amount:", scholarshipAmount);
+console.log("Remaining Budget:", remainingBudget);
