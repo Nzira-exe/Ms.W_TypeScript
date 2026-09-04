@@ -15,16 +15,16 @@
  * 2. Display the calculation results.
  */
 
-const friedRicePrice = 18000;
-const friedRiceQty = 3;
-const waterPrice = 5000;
-const waterQty = 2;
-const discount = 10000;
+const friedRicePrice : number = 18000;
+const friedRiceQty : number = 3;
+const waterPrice : number = 5000;
+const waterQty : number = 2;
+const discount : number = 10000;
 
-const totalFriedRice = friedRicePrice * friedRiceQty;
-const totalWater = waterPrice * waterQty;
-const grandTotal = totalFriedRice + totalWater;
-const finalPayment = grandTotal - discount;
+const totalFriedRice : number = friedRicePrice * friedRiceQty;
+const totalWater : number = waterPrice * waterQty;
+const grandTotal : number = totalFriedRice + totalWater;
+const finalPayment : number = grandTotal - discount;
 
 console.log("Total Fried Rice:", totalFriedRice);
 console.log("Total Water:", totalWater);

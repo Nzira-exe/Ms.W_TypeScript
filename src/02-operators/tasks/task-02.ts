@@ -15,10 +15,10 @@
 
  */
 
-const finalScore = 82;
-const attendance = 94;
-const tuitionPaid = true;
+const finalScore : number = 82;
+const attendance : number = 94;
+const tuitionPaid : boolean = true;
 
-const isEligible = finalScore >= 75 && attendance >= 90 && tuitionPaid;
+const isEligible : boolean = finalScore >= 75 && attendance >= 90 && tuitionPaid;
 
 console.log("isEligible:", isEligible);

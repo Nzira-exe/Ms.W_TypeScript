@@ -35,34 +35,34 @@
 
  */
 
-const keyboardPrice = 850000;
-const keyboardQty = 1;
-const mousePrice = 275000;
-const mouseQty = 2;
-const monitorStandPrice = 420000;
-const monitorStandQty = 1;
+const keyboardPrice : number = 850000;
+const keyboardQty : number = 1;
+const mousePrice : number = 275000;
+const mouseQty : number = 2;
+const monitorStandPrice : number = 420000;
+const monitorStandQty : number = 1;
 
-const voucherValue = 100000;
-const isPremiumMember = true;
-const vatRate = 0.11;
-const pointRate = 50000;
+const voucherValue : number = 100000;
+const isPremiumMember : boolean = true;
+const vatRate : number = 0.11;
+const pointRate : number = 50000;
 
-const subtotal =
+const subtotal : number =
   keyboardPrice * keyboardQty +
   mousePrice * mouseQty +
   monitorStandPrice * monitorStandQty;
 
-const membershipDiscount = isPremiumMember ? subtotal * 0.1 : 0;
-const afterMembershipDiscount = subtotal - membershipDiscount;
-const afterVoucher = afterMembershipDiscount - voucherValue;
+const membershipDiscount : number = isPremiumMember ? subtotal * 0.1 : 0;
+const afterMembershipDiscount : number = subtotal - membershipDiscount;
+const afterVoucher : number = afterMembershipDiscount - voucherValue;
 
-const paymentBeforeTax = afterVoucher;
-const vat = paymentBeforeTax * vatRate;
-const finalPayment = paymentBeforeTax + vat;
+const paymentBeforeTax : number = afterVoucher;
+const vat : number = paymentBeforeTax * vatRate;
+const finalPayment : number = paymentBeforeTax + vat;
 
-const rewardPoints = Math.floor(paymentBeforeTax / pointRate);
+const rewardPoints : number = Math.floor(paymentBeforeTax / pointRate);
 
-const isFreeShippingEligible = isPremiumMember || paymentBeforeTax > 1500000;
+const isFreeShippingEligible : boolean = isPremiumMember || paymentBeforeTax > 1500000;
 
 console.log("Product Subtotal:", subtotal);
 console.log("Membership Discount:", membershipDiscount);

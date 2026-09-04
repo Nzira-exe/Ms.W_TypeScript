@@ -34,23 +34,23 @@
  * - Display whether the student is accepted.
  */
 
-const studentName = "Alya Putri";
-const gpa = 3.89;
-const familyIncome = 4200000;
-const competitionCount = 4;
-const hasDisciplinaryRecord = false;
-const documentsComplete = true;
-const scholarshipBudget = 500000000;
+const studentName : string = "Alya Putri";
+const gpa : number = 3.89;
+const familyIncome : number = 4200000;
+const competitionCount : number = 4;
+const hasDisciplinaryRecord : boolean = false;
+const documentsComplete : boolean = true;
+const scholarshipBudget : number = 500000000;
 
-const isQualified =
+const isQualified : boolean =
   gpa >= 3.75 &&
   familyIncome < 5000000 &&
   competitionCount >= 3 &&
   !hasDisciplinaryRecord &&
   documentsComplete;
 
-const scholarshipAmount = isQualified ? 12000000 : 0;
-const remainingBudget = scholarshipBudget - scholarshipAmount;
+const scholarshipAmount : number = isQualified ? 12000000 : 0;
+const remainingBudget : number = scholarshipBudget - scholarshipAmount;
 
 console.log("Student Name:", studentName);
 console.log("Is Qualified:", isQualified);
