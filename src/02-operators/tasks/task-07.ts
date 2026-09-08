@@ -22,23 +22,53 @@
  * - Whether the guest is eligible for free breakfast
  */
 
-const hours : number = 7;
-const minutes : number = 35;
-const ratePerHour : number = 8000;
+interface HotelBillingInput {
+  roomPricePerNight: number;
+  nightsStayed: number;
+  serviceCharge: number;
+  taxRate: number; // e.g. 0.11 for 11%
+  isVipMember: boolean;
+}
 
-const totalMinutes : number = hours * 60 + minutes;
-const fullHours : number = Math.floor(totalMinutes / 60);
-const remainingMinutes : number = totalMinutes % 60;
-const billedHours : number = remainingMinutes > 0 ? fullHours + 1 : fullHours;
+interface HotelBillingResult {
+  roomSubtotal: number;
+  discount: number;
+  tax: number;
+  finalPayment: number;
+  freeBreakfast: boolean;
+}
 
-const totalBeforeDiscount : number = billedHours * ratePerHour;
-const isDiscountEligible : boolean = billedHours > 5;
-const discountAmount : number = isDiscountEligible ? totalBeforeDiscount * 0.15 : 0;
-const finalPayment : number = totalBeforeDiscount - discountAmount;
+function calculateHotelBilling(input: HotelBillingInput): HotelBillingResult {
+  const { roomPricePerNight, nightsStayed, serviceCharge, taxRate, isVipMember } = input;
 
-console.log("Total Playing Time (minutes):", totalMinutes);
-console.log("Remaining Minutes:", remainingMinutes);
-console.log("Total Billed Hours:", billedHours);
-console.log("Total Before Discount:", totalBeforeDiscount);
-console.log("Discount Amount:", discountAmount);
-console.log("Final Payment:", finalPayment);
+  const roomSubtotal = roomPricePerNight * nightsStayed;
+
+  const vipDiscountRate = 0.12;
+  const discount = isVipMember ? roomSubtotal * vipDiscountRate : 0;
+
+  const discountedRoomSubtotal = roomSubtotal - discount;
+  const taxableAmount = discountedRoomSubtotal + serviceCharge;
+  const tax = taxableAmount * taxRate;
+
+  const finalPayment = discountedRoomSubtotal + serviceCharge + tax;
+
+  const freeBreakfast = nightsStayed >= 3 || isVipMember;
+
+  return {
+    roomSubtotal,
+    discount,
+    tax,
+    finalPayment,
+    freeBreakfast,
+  };
+}
+
+const result = calculateHotelBilling({
+  roomPricePerNight: 650000,
+  nightsStayed: 4,
+  serviceCharge: 120000,
+  taxRate: 0.11,
+  isVipMember: true,
+});
+
+console.log(result);
