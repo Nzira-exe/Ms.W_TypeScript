@@ -26,7 +26,7 @@ interface HotelBillingInput {
   roomPricePerNight: number;
   nightsStayed: number;
   serviceCharge: number;
-  taxRate: number; // e.g. 0.11 for 11%
+  taxRate: number;
   isVipMember: boolean;
 }
 
