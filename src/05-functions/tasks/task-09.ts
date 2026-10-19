@@ -21,7 +21,16 @@
  * - printHospitalReport() must only display results.
  * - No duplicated calculations.
  */
-const patients = [
+type Patient = {
+  id: string;
+  name: string;
+  age: number;
+  department: string;
+  admitted: boolean;
+  bill: number;
+};
+
+const patients: Patient[] = [
     {
         id: "PT001",
         name: "Alya",
@@ -63,3 +72,117 @@ const patients = [
         bill: 350000
     }
 ];
+
+function countTotalPatients(data: Patient[]): number {
+  return data.length;
+}
+
+function countAdmittedPatients(data: Patient[]): number {
+  let count: number = 0;
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].admitted) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+function countDischargedPatients(data: Patient[]): number {
+  return countTotalPatients(data) - countAdmittedPatients(data);
+}
+
+function countPatientsByDepartment(data: Patient[], department: string): number {
+  let count: number = 0;
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].department === department) {
+      count++;
+    }
+  }
+
+  return count;
+}
+
+function getDepartments(data: Patient[]): string[] {
+  const departments: string[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    if (!departments.includes(data[i].department)) {
+      departments.push(data[i].department);
+    }
+  }
+
+  return departments;
+}
+
+function findHighestBill(data: Patient[]): number {
+  let highest: number = data[0].bill;
+
+  for (let i = 1; i < data.length; i++) {
+    if (data[i].bill > highest) {
+      highest = data[i].bill;
+    }
+  }
+
+  return highest;
+}
+
+function findLowestBill(data: Patient[]): number {
+  let lowest: number = data[0].bill;
+
+  for (let i = 1; i < data.length; i++) {
+    if (data[i].bill < lowest) {
+      lowest = data[i].bill;
+    }
+  }
+
+  return lowest;
+}
+
+function calculateTotalRevenue(data: Patient[]): number {
+  let total: number = 0;
+
+  for (let i = 0; i < data.length; i++) {
+    total += data[i].bill;
+  }
+
+  return total;
+}
+
+function calculateAverageBill(data: Patient[]): number {
+  return calculateTotalRevenue(data) / countTotalPatients(data);
+}
+
+function getAdmittedPatientNames(data: Patient[]): string[] {
+  const names: string[] = [];
+
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].admitted) {
+      names.push(data[i].name);
+    }
+  }
+
+  return names;
+}
+
+function printHospitalReport(data: Patient[]): void {
+  console.log(`Total patients: ${countTotalPatients(data)}`);
+  console.log(`Total admitted patients: ${countAdmittedPatients(data)}`);
+  console.log(`Total discharged patients: ${countDischargedPatients(data)}`);
+
+  console.log("Patients per department:");
+  const departments: string[] = getDepartments(data);
+  for (let i = 0; i < departments.length; i++) {
+    console.log(`- ${departments[i]}: ${countPatientsByDepartment(data, departments[i])}`);
+  }
+
+  console.log(`Highest hospital bill: Rp${findHighestBill(data)}`);
+  console.log(`Lowest hospital bill: Rp${findLowestBill(data)}`);
+  console.log(`Average hospital bill: Rp${calculateAverageBill(data)}`);
+  console.log(`Total hospital revenue: Rp${calculateTotalRevenue(data)}`);
+  console.log(`Admitted patients: ${getAdmittedPatientNames(data).join(", ")}`);
+}
+
+printHospitalReport(patients);
